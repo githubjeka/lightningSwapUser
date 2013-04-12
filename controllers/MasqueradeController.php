@@ -14,8 +14,8 @@ class MasqueradeController extends CController
         $username = $session['swap_username'];
         $identity = new CUserIdentity($username, 'passwords are broken');
         Yii::app()->user->login($identity);
-        $model = CActiveRecord::model($session['cookie_modelName_user'])->find(
-            $session['cookie_fieldName_user'] . '="' . $username . '"'
+        $model = CActiveRecord::model($session['cookie_modelName_user'])->findByAttributes(
+            array($session['cookie_fieldName_user']=>$username)
         );
         if (isset($model)) {
             Yii::app()->user->id = $model->getAttribute($session['cookie_fieldId_user']);
@@ -25,8 +25,8 @@ class MasqueradeController extends CController
     public function actionSet($username)
     {
         if (!Yii::app()->user->isGuest) {
-            $session=new CHttpSession;
-            $session['swap_username']=$username;
+            $session = new CHttpSession;
+            $session['swap_username'] = $username;
             $this->swap($session);
             return true;
         }
