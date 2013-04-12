@@ -13,16 +13,20 @@ class Masked extends CWidget
     public function init()
     {
         $userModel = CActiveRecord::model($this->modelNameUser);
-        $controller = $this->getController();
-        echo CHtml::activeDropDownList(
-            $userModel,
+
+        echo CHtml::dropDownList(
+            'user',
             $this->fieldNameUser,
             Chtml::listData($userModel->findAll(), $this->fieldNameUser, $this->fieldNameUser),
             array(
-                'onchange' => 'js:document.location.replace("' .
-                    $controller->createUrl(
-                        '/masquerade'
-                    ) . '?username="+this.value)',
+                'ajax' => array(
+                    'url' => $this->getController()->createUrl('/masquerade'),
+                    'encode' => false,
+                    'data' => 'js:{"username":this.value}',
+                    'success' => 'js: function(html) {
+                        document.location.replace(location.href)
+                    }',
+                ),
                 'empty' => '-------------',
             )
         );

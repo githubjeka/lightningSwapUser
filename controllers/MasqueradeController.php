@@ -28,8 +28,8 @@ class MasqueradeController extends CController
             $session=new CHttpSession;
             $session['swap_username']=$username;
             $this->swap($session);
-            $this->redirect($_SERVER["HTTP_REFERER"]);
+            return true;
         }
-        $this->redirect('/site');
+        throw new Exception('Not access');
     }
 }
