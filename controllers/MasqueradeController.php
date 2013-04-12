@@ -18,7 +18,7 @@ class MasqueradeController extends CController
             $session['cookie_fieldName_user'] . '="' . $username . '"'
         );
         if (isset($model)) {
-            Yii::app()->user->id = $model->id;
+            Yii::app()->user->id = $model->getAttribute($session['cookie_fieldId_user']);
         }
     }
 

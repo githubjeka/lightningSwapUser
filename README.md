@@ -17,7 +17,8 @@ $this->widget(
     'Masked',
     array(
         'modelNameUser' => 'User', //Name User model, for example may be - \users\models\User
-        'fieldNameUser' => 'username' //Name field login
+        'fieldNameUser' => 'username', //Name field login
+        '$fieldIdUser' => 'id' //Name field ID
     )
 );
 ?>

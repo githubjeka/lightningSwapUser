@@ -9,6 +9,7 @@ class Masked extends CWidget
 {
     public $modelNameUser = 'User';
     public $fieldNameUser = 'username';
+    public $fieldIdUser = 'id';
 
     public function init()
     {
@@ -33,5 +34,6 @@ class Masked extends CWidget
         $session = new CHttpSession();
         $session['cookie_modelName_user'] = $this->modelNameUser;
         $session['cookie_fieldName_user'] = $this->fieldNameUser;
+        $session['cookie_fieldId_user'] = $this->fieldIdUser;
     }
 }
