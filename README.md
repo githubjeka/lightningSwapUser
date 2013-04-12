@@ -1,5 +1,7 @@
 lightning Swap User
 =================
+[Russian version readme](https://github.com/githubjeka/lightningSwapUser/blob/master/Readme_rus.md)
+ 
 
 Change the user in a single click, for Yii Framework.
 
