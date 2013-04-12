@@ -16,7 +16,7 @@ $this->widget(
     array(
         'modelNameUser' => 'User', //Имя модели User, например - \users\models\User
         'fieldNameUser' => 'username', //Имя поля login в модели User
-		'$fieldIdUser' => 'id' //Имя поля ID в модели User
+		'fieldIdUser' => 'id' //Имя поля ID в модели User
     )
 );
 ?>
