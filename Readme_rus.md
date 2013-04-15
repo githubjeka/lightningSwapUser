@@ -16,8 +16,8 @@ $this->widget(
     array(
         'modelNameUser' => 'User', //Имя модели User, например - \users\models\User
         'fieldNameUser' => 'username', //Имя поля login в модели User
-        'fieldIdUser' => 'id' //Имя поля ID в модели User
-        'ipWhiteList' => array(), // Список ip адрессов, которым будет доступен виджет.
+        'fieldIdUser' => 'id', //Имя поля ID в модели User
+        'ipWhiteList' => array(), // Список ip адресов, которым будет доступен виджет.
         'typeView' => 'dropDown' // Тип виджета - 'autoComplete' (CJuiAutoComplete) или 'dropDown' (dropDownList) 
     )
 );
