@@ -9,27 +9,27 @@ class MasqueradeController extends CController
 {
     public $defaultAction = 'set';
 
-    protected function swap($session)
+    protected function swap()
     {
-        $username = $session['swap_username'];
+        $username = Yii::app()->session['swap_username'];
         $identity = new CUserIdentity($username, 'passwords are broken');
         Yii::app()->user->login($identity);
-        $model = CActiveRecord::model($session['cookie_modelName_user'])->findByAttributes(
-            array($session['cookie_fieldName_user']=>$username)
+        $model = CActiveRecord::model(Yii::app()->session['cookie_modelName_user'])->findByAttributes(
+            array(Yii::app()->session['cookie_fieldName_user'] => $username)
         );
+
         if (isset($model)) {
-            Yii::app()->user->id = $model->getAttribute($session['cookie_fieldId_user']);
+            Yii::app()->user->id = $model->getAttribute(Yii::app()->session['cookie_fieldId_user']);
         }
     }
 
     public function actionSet($username)
     {
-        if (!Yii::app()->user->isGuest) {
-            $session = new CHttpSession;
-            $session['swap_username'] = $username;
-            $this->swap($session);
+        if (Yii::app()->session['access'] == true) {
+            Yii::app()->session['swap_username'] = $username;
+            $this->swap();
             return true;
         }
-        throw new Exception('Not access');
+        throw new CHttpException(404, 'The requested page does not exist.');
     }
 }
