@@ -18,12 +18,16 @@ $this->widget(
     array(
         'modelNameUser' => 'User', //Name User model, for example may be - \users\models\User
         'fieldNameUser' => 'username', //Name field login
-        'fieldIdUser' => 'id' //Name field ID
+        'fieldIdUser' => 'id', //Name field ID
+        'ipWhiteList' => array(), // List of ip addresses that are available widget.
+        'typeView' => 'dropDown' // Type of widget - 'autoComplete' (CJuiAutoComplete) or 'dropDown' (dropDownList) 
     )
 );
 ?>
 ```
-or one line 
+ipWhiteList - default array('127.0.0.1', '::1/128') - localhost. These ip addresses will be added to your.
+
+or one line this code:
 ```php
 <?php $this->widget('Masked'); ?>
 ```
